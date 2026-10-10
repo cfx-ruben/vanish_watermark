@@ -31,9 +31,12 @@ CreateThread(function()
     end
 end)
 
-RegisterCommand('watermark', function(source, args)
-    enabled = not enabled
-    toggleWatermark(enabled)
+lib.addKeybind({
+    name = 'watermark',
+    description = 'Mostrar / Ocultar marca de agua',
+    defaultKey = 'TAB',
+    onPressed = function() toggleWatermark() end
+})
 end)
 
 exports('loadWatermark', function()
