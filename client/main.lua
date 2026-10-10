@@ -9,6 +9,14 @@ local function setVisibility(visible)
     })
 end
 
+local function toggleWatermark()
+    enabled = not enabled
+    if enabled then
+        setVisibility(enabled)
+    else
+        setVisibility(enabled)
+    end
+end
 CreateThread(function()
     while true do
         if IsPauseMenuActive() and enabled then
