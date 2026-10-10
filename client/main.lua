@@ -1,6 +1,13 @@
 local loaded = false
 local enabled = true
 
+local function getLib()
+    if GetResourceState('ox_lib') == 'started' then
+        print('ox_lib has been loaded')
+    else
+        print('no modern library was found')
+    end
+end
 ---@param visible boolean
 local function setVisibility(visible)
     SetNuiFocus(false, false)
@@ -37,6 +44,10 @@ lib.addKeybind({
     defaultKey = 'TAB',
     onPressed = function() toggleWatermark() end
 })
+AddEventHandler('onResourceStart', function(resource)
+    if resource == GetCurrentResourceName() then
+        getLib()
+    end
 end)
 
 exports('loadWatermark', function()
