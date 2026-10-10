@@ -51,7 +51,9 @@ lib.addKeybind({
     name = 'watermark',
     description = 'Mostrar / Ocultar marca de agua',
     defaultKey = 'TAB',
-    onPressed = function() toggleWatermark() end
+    onPressed = function()
+        toggleWatermark()
+    end
 })
 
 
