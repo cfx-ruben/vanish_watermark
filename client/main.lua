@@ -5,11 +5,17 @@ local enabled = true
 
 
 -- FUNCTIONS
+local function enableDebug(...)
+    if config.debug then
+        print(...)
+    end
+end
+
 local function getLib()
     if GetResourceState('ox_lib') == 'started' then
-        print('ox_lib has been loaded')
+        enableDebug('ox_lib has been loaded')
     else
-        print('no modern library was found')
+        enableDebug('no modern library was found')
     end
 end
 
