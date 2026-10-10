@@ -1,4 +1,5 @@
 -- VARIABLES
+local config = require 'shared.config'
 local loaded = false
 local enabled = true
 
@@ -49,8 +50,8 @@ end)
 -- KEYBIND
 lib.addKeybind({
     name = 'watermark',
-    description = 'Mostrar / Ocultar marca de agua',
-    defaultKey = 'TAB',
+    description = config.keybind.description,
+    defaultKey = config.keybind.defaultKey,
     onPressed = function()
         toggleWatermark()
     end
