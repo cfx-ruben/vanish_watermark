@@ -1,6 +1,9 @@
+-- VARIABLES
 local loaded = false
 local enabled = true
 
+
+-- FUNCTIONS
 local function getLib()
     if GetResourceState('ox_lib') == 'started' then
         print('ox_lib has been loaded')
@@ -8,6 +11,7 @@ local function getLib()
         print('no modern library was found')
     end
 end
+
 ---@param visible boolean
 local function setVisibility(visible)
     SetNuiFocus(false, false)
@@ -24,6 +28,9 @@ local function toggleWatermark()
         setVisibility(enabled)
     end
 end
+
+
+-- THREAD
 CreateThread(function()
     while true do
         if IsPauseMenuActive() and enabled then
@@ -38,18 +45,25 @@ CreateThread(function()
     end
 end)
 
+
+-- KEYBIND
 lib.addKeybind({
     name = 'watermark',
     description = 'Mostrar / Ocultar marca de agua',
     defaultKey = 'TAB',
     onPressed = function() toggleWatermark() end
 })
+
+
+-- HANDLER
 AddEventHandler('onResourceStart', function(resource)
     if resource == GetCurrentResourceName() then
         getLib()
     end
 end)
 
+
+-- EXPORTS
 exports('loadWatermark', function()
     setVisibility(enabled)
     loaded = true
