@@ -14,7 +14,7 @@ CreateThread(function()
         if IsPauseMenuActive() and enabled then
             setVisibility(false)
         else
-            if enabled and loaded then
+            if enabled and not loaded then
                 setVisibility(true)
             end
         end
